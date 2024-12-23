@@ -11,24 +11,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/user/login")
-public class UserController extends HttpServlet {
+@WebServlet("/validateCredential")
+public class LoginServlet extends HttpServlet {
 
-    private UserDaoImpl userDaoImpl;
+    private UserDaoImpl userDaoImpl=new UserDaoImpl();
 
-    public UserController() {
-        this.userDaoImpl = new UserDaoImpl(new JdbcUtils());
-    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("Validate Login");
         int userId = Integer.parseInt(request.getParameter("userId"));
         String password = request.getParameter("password");
         User user = userDaoImpl.validateUser(userId, password);
 
-        if (user != null) {
-            request.setAttribute("user", user);
-            request.getRequestDispatcher("/Dashboard.jsp").forward(request, response);
+
+        if (user != null && user.getRole().equals("user") ) {
+            request.getSession().setAttribute("user", user);
+            response.sendRedirect("/user/dashboard");
+        }else if ( user != null && user.getRole().equals("admin") ) {
+            request.getSession().setAttribute("user", user);
+            response.sendRedirect("/admin/dashboard");
         } else {
             response.sendRedirect("/Login.jsp");
         }

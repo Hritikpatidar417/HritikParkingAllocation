@@ -1,5 +1,16 @@
 package com.ParkingAllocation.Dao;
 
-public interface ParkingDao {
+import com.ParkingAllocation.Entity.ParkingHistory;
+import com.ParkingAllocation.Entity.ParkingModel;
 
+import java.util.Date;
+import java.util.List;
+
+public interface ParkingDao {
+    public String addParking(String parkingType);
+    public ParkingModel getParkingInformation(int parkingId);
+    public String checkIn(int userId,int parkingSlot,String vehicleNo);
+    public String checkOut(int parkingId);
+    public List<ParkingHistory> viewParkingHistory(Date startDate, Date endDate);
+    public List<ParkingModel> getAllParkingSlot();
 }
