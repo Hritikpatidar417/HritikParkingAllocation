@@ -27,7 +27,6 @@ public class Dashboard extends HttpServlet {
 
         if(user!=null) {
             List<ParkingModel> parkingModelList = parkingDaoImpl.getAllParkingSlot();
-            System.out.println("Parking Size:" + parkingModelList.size());
             request.setAttribute("parking", parkingModelList);
             request.getRequestDispatcher("/Admin/Dashboard.jsp").forward(request, response);
 
