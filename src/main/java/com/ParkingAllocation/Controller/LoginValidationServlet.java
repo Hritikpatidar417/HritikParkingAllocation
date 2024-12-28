@@ -1,7 +1,6 @@
 package com.ParkingAllocation.Controller;
 
 import com.ParkingAllocation.Entity.User;
-import com.ParkingAllocation.JDBCUtils.JdbcUtils;
 import com.ParkingAllocation.DaoImpl.UserDaoImpl;
 
 import javax.servlet.ServletException;
@@ -11,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/validateCredential")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/LoginValidationServlet")
+public class LoginValidationServlet extends HttpServlet {
 
     private UserDaoImpl userDaoImpl=new UserDaoImpl();
 

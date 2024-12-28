@@ -23,16 +23,12 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int empId=Integer.parseInt(request.getParameter("userId"));
+        int userId=Integer.parseInt(request.getParameter("userId"));
         String userName = request.getParameter("userName");
         String role = request.getParameter("role");
         String password = request.getParameter("password");
-        User user = new User();
-        user.setUserId(empId);
-        user.setName(userName);
-        user.setRole(role);
-        user.setPassword(password);
-        String status = userDaoImpl.addUser(user);
+
+        String status = userDaoImpl.addUser(userId,userName,role,password);
         request.setAttribute("registrationStatus", status);
         request.getRequestDispatcher("/Login.jsp").forward(request, response);
     }

@@ -79,6 +79,8 @@ public class ParkingDaoImpl implements ParkingDao {
           System.out.println("Check In");
           ParkingModel parkingModel = getParkingInformation(parkingSlot);
           User user = userDao.getUserInformation(userId);
+
+         // Checking if parking slot is free or not
           if (parkingModel.getStatus().equals("Free")) {
               parkingModel.setUserId(userId);
               parkingModel.setVehicleNo(vehicleNo);
@@ -91,6 +93,7 @@ public class ParkingDaoImpl implements ParkingDao {
                   maxParkingHistoryId = resultSet.getInt(1) + 1;
               }
 
+              // Creating parking history log for admin
               ParkingHistory parkingHistory = new ParkingHistory();
               parkingHistory.setSno(maxParkingHistoryId);
               parkingHistory.setParkingSlot(parkingSlot);
@@ -106,13 +109,14 @@ public class ParkingDaoImpl implements ParkingDao {
               updateStatement = con.prepareStatement(sql);
               updateStatement.setInt(1, maxParkingHistoryId);
               updateStatement.setInt(2, parkingHistory.getParkingSlot());
-
               updateStatement.setInt(3, parkingHistory.getEmployeeId());
               updateStatement.setString(4, parkingHistory.getEmployeeName());
               updateStatement.setDate(5, new java.sql.Date(parkingHistory.getDate().getTime()));
               updateStatement.setTime(6, java.sql.Time.valueOf(parkingHistory.getStartTime()));
               updateStatement.setString(7, vehicleNo);
               updateStatement.executeUpdate();
+
+              // It is setting parking status as occupied so other cannot able to book same slot
               updateStatement = con.prepareStatement("UPDATE Parking SET userId = ?, status = 'Occupied', userName=?, parkingHistoryId=?, vehicleNo=? WHERE parkingId = ?");
               updateStatement.setInt(1, userId);
               updateStatement.setString(2, user.getName());
@@ -120,10 +124,10 @@ public class ParkingDaoImpl implements ParkingDao {
               updateStatement.setString(4, vehicleNo);
               updateStatement.setInt(5, parkingSlot);
               updateStatement.executeUpdate();
-              System.out.println("Parked");
 
               return "success";
           } else {
+            // If parking slot is not free then returning message failed
               return "failed";
           }
       }catch (Exception e)

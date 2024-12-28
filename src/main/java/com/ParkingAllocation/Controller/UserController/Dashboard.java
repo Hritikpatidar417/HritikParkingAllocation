@@ -23,11 +23,10 @@ public class Dashboard extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = (User) request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user"); // Done for user security
 
         if(user!=null) {
             List<ParkingModel> parkingModelList = parkingDaoImpl.getAllParkingSlot();
-            System.out.println("Parking Size:" + parkingModelList.size());
             request.setAttribute("parking", parkingModelList);
             request.getRequestDispatcher("/User/Dashboard.jsp").forward(request, response);
 

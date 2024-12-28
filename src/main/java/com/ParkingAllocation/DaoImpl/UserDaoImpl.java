@@ -18,14 +18,16 @@ public class UserDaoImpl  implements UserDao {
         this.jdbcUtils =new JdbcUtils();
     }
 
-    public String addUser(User user)
+    public String addUser(int userId, String name,String role, String password)
     {
         try {
+
+            User user=new User();
 
             Connection con=jdbcUtils.establishConnection();
             Statement statement = con.createStatement();
             String query = "INSERT INTO Users (userId, name, role, password) " +
-                    "VALUES (" + user.getUserId() + ", '" + user.getName() + "', '" + user.getRole() + "', '" + user.getPassword() + "')";
+                    "VALUES (" + userId + ", '" + name + "', '" + role + "', '" + password + "')";
             PreparedStatement ps = con.prepareStatement(query);
             ps.executeUpdate();
             con.close();
