@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 @WebServlet("/admin/addParking")
 public class AddParking extends HttpServlet {
@@ -22,8 +24,9 @@ public class AddParking extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String parkingType = request.getParameter("parkingType");
-        String status=parkingDaoImpl.addParking(parkingType);
+        String[] parkingTypeList = request.getParameterValues("parkingTypeList");
+
+        String status=parkingDaoImpl.addParking(parkingTypeList);
         request.getRequestDispatcher("Admin/Dashboard.jsp").forward(request, response);
 
     }

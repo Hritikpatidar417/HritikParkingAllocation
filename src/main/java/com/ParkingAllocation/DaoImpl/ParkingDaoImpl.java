@@ -23,24 +23,26 @@ public class ParkingDaoImpl implements ParkingDao {
         this.userDao = new UserDaoImpl();
     }
 
-    public String addParking(String parkingType)
+    public String addParking(String[] parkingTypeList)
     {
         try{
             Connection con=jdbcUtils.establishConnection();
-            int maxParkingId=1;
-            Statement statement=con.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT MAX(parkingId) FROM Parking");
-            if (resultSet.next()) {
-                maxParkingId = resultSet.getInt(1) + 1;
-            }
+           for(String parkingType:parkingTypeList) {
+               int maxParkingId = 1;
+               Statement statement = con.createStatement();
+               ResultSet resultSet = statement.executeQuery("SELECT MAX(parkingId) FROM Parking");
+               if (resultSet.next()) {
+                   maxParkingId = resultSet.getInt(1) + 1;
+               }
 
-            String query = "INSERT INTO Parking (parkingId, parkingType, status) " +
-                    "VALUES (?, ?, ?)";
-            PreparedStatement preparedStatement=con.prepareStatement(query);
-            preparedStatement.setInt(1, maxParkingId);
-            preparedStatement.setString(2, parkingType);
-            preparedStatement.setString(3, "Free");
-            preparedStatement.executeUpdate();
+               String query = "INSERT INTO Parking (parkingId, parkingType, status) " +
+                       "VALUES (?, ?, ?)";
+               PreparedStatement preparedStatement = con.prepareStatement(query);
+               preparedStatement.setInt(1, maxParkingId);
+               preparedStatement.setString(2, parkingType);
+               preparedStatement.setString(3, "Free");
+               preparedStatement.executeUpdate();
+           }
             con.close();
             return "Success";
         }catch (Exception e)
@@ -165,7 +167,7 @@ public class ParkingDaoImpl implements ParkingDao {
         try {
             Connection conn=jdbcUtils.establishConnection();
 
-            String query = "SELECT * FROM parking_history WHERE date BETWEEN ? AND ?";
+            String query = "SELECT * FROM parkingHistory WHERE date BETWEEN ? AND ?";
 
          PreparedStatement preparedStatement = conn.prepareStatement(query);
          preparedStatement.setDate(1, new java.sql.Date(startDate.getTime()));
@@ -176,14 +178,16 @@ public class ParkingDaoImpl implements ParkingDao {
                     ParkingHistory parkingHistory = new ParkingHistory();
 
                     parkingHistory.setSno(resultSet.getInt("sno"));
-                    parkingHistory.setParkingSlot(resultSet.getInt("parking_slot"));
-                    parkingHistory.setEmployeeId(resultSet.getInt("employee_id"));
-                    parkingHistory.setEmployeeName(resultSet.getString("employee_name"));
+                    parkingHistory.setParkingSlot(resultSet.getInt("parkingSlot"));
+                    parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
+                    parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
                     parkingHistory.setDate(resultSet.getDate("date"));
-                    parkingHistory.setStartTime(resultSet.getTime("start_time").toLocalTime());
-                    parkingHistory.setEndTime(resultSet.getTime("end_time").toLocalTime());
+
+                    parkingHistory.setStartTime(resultSet.getTime("startTime").toLocalTime());
+                    parkingHistory.setEndTime(resultSet.getTime("endTime").toLocalTime());
                     parkingHistoryList.add(parkingHistory);
                 }
+            System.out.println(parkingHistoryList.size());
                     return parkingHistoryList;
 
 
@@ -192,6 +196,41 @@ public class ParkingDaoImpl implements ParkingDao {
             return null;
         }
     }
+
+    public List<ParkingHistory> viewAllParkingHistory(int employeeId)
+    {
+        List<ParkingHistory> parkingHistoryList=new ArrayList<>();
+        try {
+            Connection conn=jdbcUtils.establishConnection();
+
+            String query = "SELECT * FROM parkingHistory WHERE employeeId=?";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setInt(1, employeeId);
+
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                ParkingHistory parkingHistory = new ParkingHistory();
+
+                parkingHistory.setSno(resultSet.getInt("sno"));
+                parkingHistory.setParkingSlot(resultSet.getInt("parkingSlot"));
+                parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
+                parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
+                parkingHistory.setDate(resultSet.getDate("date"));
+                parkingHistory.setStartTime(resultSet.getTime("startTime").toLocalTime());
+                parkingHistory.setEndTime(resultSet.getTime("endTime").toLocalTime());
+                parkingHistoryList.add(parkingHistory);
+            }
+            return parkingHistoryList;
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public List<ParkingModel> getAllParkingSlot() {
         List<ParkingModel> parkingList = new ArrayList<>();

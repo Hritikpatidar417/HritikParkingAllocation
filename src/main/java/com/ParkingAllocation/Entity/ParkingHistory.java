@@ -88,4 +88,18 @@ public class ParkingHistory {
     public void setVehicleNo(String vehicleNo) {
         this.vehicleNo = vehicleNo;
     }
+
+    @Override
+    public String toString() {
+        return "ParkingHistory{" +
+                "sno=" + sno +
+                ", parkingSlot=" + parkingSlot +
+                ", employeeId=" + employeeId +
+                ", employeeName='" + employeeName + '\'' +
+                ", date=" + date +
+                ", vehicleNo='" + vehicleNo + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                '}';
+    }
 }

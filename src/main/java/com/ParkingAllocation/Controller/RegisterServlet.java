@@ -17,7 +17,9 @@ public class RegisterServlet extends HttpServlet {
     private UserDaoImpl userDaoImpl;
 
     public RegisterServlet() {
+        this.userDaoImpl = new UserDaoImpl();
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

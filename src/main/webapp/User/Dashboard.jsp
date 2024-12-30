@@ -120,7 +120,8 @@
     <div class="sidebar p-3">
         <h3 class="text-center">Parking System</h3>
         <a href="#">Park Vehicle</a>
-        <a href="#">View Booking History</a>
+        <a href="/user/ViewParkingHistory">View Booking History</a>
+        <a href="/logout">Logout</a>
     </div>
 
     <!-- Main Content -->
@@ -129,15 +130,13 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
                 <span class="navbar-text">
-                    <strong>Today's Date and Time:</strong> <span id="currentDateTime"></span>
+                    <h4>Welcome, ${sessionScope.user.name} (${sessionScope.user.userId})</h4>
                 </span>
             </div>
         </nav>
 
         <!-- User Info Section -->
-        <div class="mt-3">
-            <h4>Welcome, ${sessionScope.user.name} (${sessionScope.user.userId})</h4>
-        </div>
+
 
         <h2 class="mt-3">Parking Slots</h2>
 
