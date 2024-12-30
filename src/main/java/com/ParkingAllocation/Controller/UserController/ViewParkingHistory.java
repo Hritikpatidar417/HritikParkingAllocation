@@ -36,6 +36,7 @@ public class ViewParkingHistory extends HttpServlet {
             if(user!=null)
             {
                 List<ParkingHistory> parkingHistoryList=parkingDaoImpl.viewAllParkingHistory(user.getUserId());
+                System.out.println(parkingHistoryList.size());
                 request.setAttribute("parkingHistory", parkingHistoryList);
                 request.getRequestDispatcher("/User/ParkingHistory.jsp").forward(request, response);
             }else {

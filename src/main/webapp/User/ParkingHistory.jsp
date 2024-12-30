@@ -10,7 +10,7 @@
     <div class="container mt-5">
         <h2 class="text-center">User Parking History</h2>
 
-        <!-- Parking History Table -->
+                              <!-- Parking History Table -->
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>

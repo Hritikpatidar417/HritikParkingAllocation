@@ -182,15 +182,20 @@ public class ParkingDaoImpl implements ParkingDao {
                     parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
                     parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
                     parkingHistory.setDate(resultSet.getDate("date"));
+                    Timestamp startTimeTimestamp = resultSet.getTimestamp("startTime");
+                    Timestamp endTimeTimestamp = resultSet.getTimestamp("endTime");
+                    if(startTimeTimestamp!=null)
+                    {
+                        parkingHistory.setStartTime(resultSet.getTime("startTime").toLocalTime());
+                    }
+                    if(endTimeTimestamp!=null)
+                    {
+                        parkingHistory.setEndTime(resultSet.getTime("endTime").toLocalTime());
+                    }
 
-                    parkingHistory.setStartTime(resultSet.getTime("startTime").toLocalTime());
-                    parkingHistory.setEndTime(resultSet.getTime("endTime").toLocalTime());
                     parkingHistoryList.add(parkingHistory);
                 }
-            System.out.println(parkingHistoryList.size());
                     return parkingHistoryList;
-
-
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -218,8 +223,17 @@ public class ParkingDaoImpl implements ParkingDao {
                 parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
                 parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
                 parkingHistory.setDate(resultSet.getDate("date"));
-                parkingHistory.setStartTime(resultSet.getTime("startTime").toLocalTime());
-                parkingHistory.setEndTime(resultSet.getTime("endTime").toLocalTime());
+                Timestamp startTimeTimestamp = resultSet.getTimestamp("startTime");
+                Timestamp endTimeTimestamp = resultSet.getTimestamp("endTime");
+                if(startTimeTimestamp!=null)
+                {
+                    parkingHistory.setStartTime(resultSet.getTime("startTime").toLocalTime());
+                }
+                if(endTimeTimestamp!=null)
+                {
+                    parkingHistory.setEndTime(resultSet.getTime("endTime").toLocalTime());
+                }
+
                 parkingHistoryList.add(parkingHistory);
             }
             return parkingHistoryList;
