@@ -159,10 +159,7 @@
                                                   <div>Employee Id: ${parking.userId}</div>
                                                   <div>Employee Name: ${parking.userName}</div>
 
-                                                                   <form action="/user/checkOut" method="POST">
-                                                                       <input type="hidden" name="parkingId" value="${parking.parkingId}">
-                                                                       <button type="submit" class="btn btn-danger mt-2">Checkout</button>
-                                                                   </form>
+
                                 </div>
                             </c:otherwise>
                         </c:choose>
@@ -192,10 +189,7 @@
                <div>Employee Id: ${parking.userId}</div>
                <div>Employee Name: ${parking.userName}</div>
 
-                               <form action="/user/checkOut" method="POST">
-                                   <input type="hidden" name="parkingId" value="${parking.parkingId}">
-                                   <button type="submit" class="btn btn-danger mt-2">Checkout</button>
-                               </form>
+
            </div>
        </c:otherwise>
 
