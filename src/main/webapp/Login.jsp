@@ -4,76 +4,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            padding: 50px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #fff;
+            color: black;
         }
 
-        .login-form {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            margin: 0 auto;
+
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            overflow: hidden;
         }
 
-        .login-form h2 {
-            text-align: center;
+
+        .logo-container {
+            flex: 1;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: black;
+            padding: 20px;
+        }
+
+
+        .logo-container img {
+            max-width: 240px;
             margin-bottom: 20px;
         }
 
-        .input-field {
+
+        .form-container {
+            flex: 2;
+            background-color: #E2E4E3;
+            padding: 40px;
+        }
+
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+
+        form input {
             width: 100%;
             padding: 10px;
-            margin: 10px 0;
+            margin-bottom: 20px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-size: 16px;
         }
 
-        .login-btn {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 10px;
+
+        form button {
             width: 100%;
-            border-radius: 4px;
+            padding: 12px;
+            background-color: #2575fc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .login-btn:hover {
-            background-color: #45a049;
+
+        form button:hover {
+            background-color: #6a11cb;
         }
+
 
         .error-message {
             color: red;
             text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
 
-    <div class="login-form">
-        <h2>Login</h2>
 
-        <!-- Check for error message -->
-        <c:if test="${not empty errorMessage}">
-            <div class="error-message">
-                ${errorMessage}
-            </div>
-        </c:if>
+<div class="container">
+    <div class="logo-container">
+        <img src="./YashLogo.png" alt="Logo">
+        <h2>Welcome Back</h2>
+    </div>
+    <div class="form-container">
+        <h1>Login</h1>
+
+        <!-- Display error message if available -->
+        <%
+            String errorMessage = (String) request.getAttribute("errorMessage");
+            if (errorMessage != null) {
+        %>
+        <div class="error-message">
+            <%= errorMessage %>
+        </div>
+        <%
+            }
+        %>
+
 
         <form action="LoginValidationServlet" method="post">
-            <input type="text" class="input-field" name="userId" placeholder="User ID" required />
-            <input type="password" class="input-field" name="password" placeholder="Password" required />
-            <button type="submit" class="login-btn">Login</button>
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" name="userId" placeholder="Enter your User ID" required>
+
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+
+            <button type="submit">Login</button>
         </form>
 
+
+        <p>Not registered? <a href="/Register.jsp">Register Here</a></p>
     </div>
+</div>
+
 
 </body>
 </html>
+
+
+
+
+
+
