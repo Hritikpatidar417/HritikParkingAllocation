@@ -4,6 +4,7 @@ import com.ParkingAllocation.DaoImpl.ParkingDaoImpl;
 import com.ParkingAllocation.Entity.ParkingModel;
 import com.ParkingAllocation.Entity.User;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +28,19 @@ public class AddParking extends HttpServlet {
         String[] parkingTypeList = request.getParameterValues("parkingTypeList");
 
         String status=parkingDaoImpl.addParking(parkingTypeList);
-        request.getRequestDispatcher("Admin/Dashboard.jsp").forward(request, response);
+        if ("success".equalsIgnoreCase(status)) {
+            request.setAttribute("registrationStatus", "Registration successful! Please log in.");
+        } else {
+            request.setAttribute("registrationStatus", "Registration failed! Please try again.");
+        }
+
+//        RequestDispatcher rd=request.getRequestDispatcher("/Admin/Dashboard.jsp");
+//        rd.forward(request,response);
+
+
+
+
+        request.getRequestDispatcher("/Status.jsp").forward(request, response);
 
     }
 

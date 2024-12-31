@@ -9,9 +9,9 @@
     <div class="container mt-5">
         <div class="alert alert-success text-center" role="alert">
             <h4 class="alert-heading">Success!</h4>
-            <p>Your operation was completed successfully.</p>
+            <p>Parking Slot Added successfully.</p>
             <hr>
-            <a href="/user/dashboard" class="btn btn-primary">Go Back to Dashboard</a>
+            <a href="/admin/dashboard" class="btn btn-primary">Go Back to Dashboard</a>
         </div>
     </div>
 

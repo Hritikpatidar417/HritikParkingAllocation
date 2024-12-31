@@ -129,6 +129,12 @@
             }
         %>
 
+        <!-- Display the registration success message -->
+            <c:if test="${not empty registrationStatus}">
+                <p style="color: green;">${registrationStatus}</p>
+            </c:if>
+
+
 
         <form action="LoginValidationServlet" method="post">
             <label for="userId">User ID:</label>

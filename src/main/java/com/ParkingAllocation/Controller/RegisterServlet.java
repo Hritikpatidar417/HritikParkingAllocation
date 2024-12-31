@@ -25,15 +25,29 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        int userId=Integer.parseInt(request.getParameter("userId"));
+
+        int userId = Integer.parseInt(request.getParameter("userId"));
         String userName = request.getParameter("userName");
         String role = request.getParameter("role");
         String password = request.getParameter("password");
 
-        String status = userDaoImpl.addUser(userId,userName,role,password);
-        request.setAttribute("registrationStatus", status);
+
+        // Add user using DAO
+        String status = userDaoImpl.addUser(userId, userName, role, password);
+
+
+        // Check if registration was successful
+        if ("success".equalsIgnoreCase(status)) {
+            request.setAttribute("registrationStatus", "Registration successful! Please log in.");
+        } else {
+            request.setAttribute("registrationStatus", "Registration failed! Please try again.");
+        }
+
+
+        // Forward to Login.jsp
         request.getRequestDispatcher("/Login.jsp").forward(request, response);
     }
+
 
 
 }

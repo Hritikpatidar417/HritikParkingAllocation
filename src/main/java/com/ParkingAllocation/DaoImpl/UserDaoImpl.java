@@ -29,9 +29,16 @@ public class UserDaoImpl  implements UserDao {
             String query = "INSERT INTO Users (userId, name, role, password) " +
                     "VALUES (" + userId + ", '" + name + "', '" + role + "', '" + password + "')";
             PreparedStatement ps = con.prepareStatement(query);
-            ps.executeUpdate();
+             int rowsAffected = ps.executeUpdate();
             con.close();
-            return "User added";
+
+             if(rowsAffected > 0) {
+                 return "success";
+             }else{
+                 return "failed" ;
+             }
+
+
         }catch (Exception e)
         {
             e.printStackTrace();
@@ -53,9 +60,14 @@ public class UserDaoImpl  implements UserDao {
             String query = "INSERT INTO Parking (parkingId, userAllocationId, status) " +
                     "VALUES (" + parkingModel.getParkingId() + ", NULL, 'Free')";
             PreparedStatement ps = con.prepareStatement(query);
-            ps.executeUpdate();
+            int rowsAffected = ps.executeUpdate();
             con.close();
-            return "User updated";
+
+            if(rowsAffected > 0) {
+                return "success";
+            }else{
+                return "failed" ;
+            }
         }catch (Exception e)
         {
             e.printStackTrace();
