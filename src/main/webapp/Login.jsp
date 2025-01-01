@@ -20,7 +20,7 @@
 
 
         .container {
-            width: 80%;
+            width: 60%;
             max-width: 1000px;
             background: #fff;
             border-radius: 10px;
@@ -112,7 +112,7 @@
 <div class="container">
     <div class="logo-container">
         <img src="./YashLogo.png" alt="Logo">
-        <h2>Welcome Back</h2>
+
     </div>
     <div class="form-container">
         <h1>Login</h1>
