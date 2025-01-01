@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface ParkingDao {
     public String addParking(String[] parkingTypeList);
+    public String removeParking(int[] SlotIdList);
     public ParkingModel getParkingInformation(int parkingId);
     public String checkIn(int userId,int parkingSlot,String vehicleNo);
     public String checkOut(int parkingId);

@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parking Slots</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
+       <style>
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
@@ -16,68 +15,93 @@
 
 
         /* Sidebar Styles */
-        .sidebar {
-            height: 100vh;
-            width: 250px;
-            background-color: #343a40;
-            color: white;
-            position: fixed;
-            padding-top: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-        }
+        .sidebar
+              {
+                 height: 100vh;
+                 width: 250px;
+                 background-color: #343a40;
+                 color: white;
+                 position: fixed;
+                 padding-top: 20px;
+                 box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+                       }
 
 
-        .sidebar h3 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
+              .sidebar h3 {
+                 text-align: center;
+                 margin-bottom: 20px;
+                 font-size: 1.5rem;
+                       }
 
 
-        .sidebar a {
-            color: white;
-            padding: 15px 20px;
-            text-decoration: none;
-            display: block;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin: 5px 0;
-        }
+                       .sidebar a {
+                           color: white;
+                           padding: 15px 20px;
+                           text-decoration: none;
+                           display: block;
+                           border-radius: 5px;
+                           transition: background-color 0.3s ease;
+                           margin: 5px 0;
+                       }
 
 
-        .sidebar a:hover {
-            background-color: #01106d;
-        }
+                       .sidebar a:hover {
+                           background-color: #01106d;
+                       }
 
 
-        /* Main Content Styles */
-        .main-content {
-            margin-left: 270px;
-            padding: 20px;
-        }
+                       /* Main Content Styles */
+                       .main-content {
+                           margin-left: 270px;
+                           padding: 20px;
+                       }
 
 
-        .navbar {
-            background-color: #343a40;
-            padding: 15px 5px;
-            border-bottom: 1px solid #ddd;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display:flex;
-            justify-content:center;
+                       .navbar {
+                           background-color: #343a40;
+                           padding: 15px 5px;
+                           border-bottom: 1px solid #ddd;
+                           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                           display:flex;
+                           justify-content:center;
 
-        }
+                       }
 
 
-        .navbar h4 {
-            margin: 0;
-            color: white;
-        }
+                       .navbar h4 {
+                           margin: 0;
+                           color: white;
+                       }
 
+                       img {
+                           max-width: 250px;
+                           margin-bottom: 20px;
+                           background-color:white;
+
+                                       }
+
+
+                       @media (max-width: 768px) {
+                                   .sidebar {
+                                   width: 200px;
+                                   }
+
+
+                                   .main-content {
+                                       margin-left: 220px;
+                                   }
+
+
+                                   .parking-slot {
+                                       font-size: 0.9rem;
+                                       padding: 10px;
+                                   }
+                               }
 
         h2, h4 {
             color: #343a40;
             margin-bottom: 10px;
-            margin-top:15px;
+
         }
         .heading{
         text-align:center;
@@ -177,7 +201,7 @@
 
 
         .modal-content input {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
@@ -199,37 +223,16 @@
             color: #333;
         }
 
-         img {
-                    max-width: 250px;
-                    margin-bottom: 20px;
-                   background-color:white;
 
-                }
-
-
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 200px;
-            }
-
-
-            .main-content {
-                margin-left: 220px;
-            }
-
-
-            .parking-slot {
-                font-size: 0.9rem;
-                padding: 10px;
-            }
-        }
     </style>
 </head>
 <body>
 <div class="sidebar">
  <img src="../YashLogo.png" alt="Logo">
     <h3>Parking System</h3>
+
     <a href="#">Park Vehicle</a>
+
     <a href="/user/ViewParkingHistory">View Booking History</a>
     <a href="/logout">Logout</a>
 </div>
@@ -241,6 +244,8 @@
         <h4>Welcome, ${sessionScope.user.name} (${sessionScope.user.userId})</h4>
     </div>
 
+
+   <div class="container">
 
     <!-- Parking Slots Section -->
     <h2 class="heading">Parking Slots</h2>

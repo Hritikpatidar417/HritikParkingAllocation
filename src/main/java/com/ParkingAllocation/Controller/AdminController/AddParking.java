@@ -28,18 +28,13 @@ public class AddParking extends HttpServlet {
         String[] parkingTypeList = request.getParameterValues("parkingTypeList");
 
         String status=parkingDaoImpl.addParking(parkingTypeList);
-        if ("success".equalsIgnoreCase(status)) {
-            request.setAttribute("registrationStatus", "Registration successful! Please log in.");
-        } else {
-            request.setAttribute("registrationStatus", "Registration failed! Please try again.");
-        }
-
+//        if ("success".equalsIgnoreCase(status)) {
+//            request.setAttribute("registrationStatus", "Registration successful! Please log in.");
+//        } else {
+//            request.setAttribute("registrationStatus", "Registration failed! Please try again.");
+//        }
 //        RequestDispatcher rd=request.getRequestDispatcher("/Admin/Dashboard.jsp");
 //        rd.forward(request,response);
-
-
-
-
         request.getRequestDispatcher("/Status.jsp").forward(request, response);
 
     }

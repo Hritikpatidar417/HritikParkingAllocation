@@ -53,6 +53,33 @@ public class ParkingDaoImpl implements ParkingDao {
 
     }
 
+    public String removeParking(int[] slotIdList)
+    {
+        try{
+            Connection con=jdbcUtils.establishConnection();
+            for(int slotId:slotIdList) {
+                int maxParkingId = 1;
+                Statement statement = con.createStatement();
+//                ResultSet resultSet = statement.executeQuery("SELECT MAX(parkingId) FROM Parking");
+//                if (resultSet.next()) {
+//                    maxParkingId = resultSet.getInt(1) + 1;
+//                }
+
+                String query = "DELETE FROM parking WHERE parkingId = ?";
+                PreparedStatement preparedStatement = con.prepareStatement(query);
+                preparedStatement.setInt(1,(slotId));
+                preparedStatement.executeUpdate();
+            }
+            con.close();
+            return "Success";
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+            return "Failed";
+        }
+
+    }
+
     public ParkingModel getParkingInformation(int parkingId){
         try{
        ParkingModel parkingModel=new ParkingModel();

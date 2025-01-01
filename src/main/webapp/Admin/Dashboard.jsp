@@ -72,11 +72,19 @@
                color: white;
            }
 
+             h4 {
+                color: #343a40;
+                margin-bottom: 10px;
+                margin-top:15px;
 
-           h2, h4 {
+             }
+
+
+           h2 {
                color: #343a40;
                margin-bottom: 10px;
                margin-top:15px;
+               text-align: center;
            }
            .heading{
            text-align:center;
@@ -229,7 +237,10 @@
 
  <img src="../YashLogo.png" alt="Logo">
     <h3>Parking System</h3>
-    <a href="/Admin/AddParkingSlot.jsp">Add Parking Slot</a>
+    <a href="/admin/dashboard">Dashboard</a>
+     <a href="/Admin/AddParkingSlot.jsp">Add Parking Slots</a>
+
+    <a href="/Admin/RemoveParking.jsp">Remove Parking Slots</a>
     <a href="/Admin/ParkingHistory.jsp">View Parking History</a>
     <a href="/logout">Logout</a>
 </div>
@@ -243,7 +254,7 @@
 
 
     <!-- Parking Slots Section -->
-    <h2 class="section-title">Parking Slots</h2>
+    <h2 class="section-title">All Parking Status</h2>
 
 
     <!-- Bike Parking Section -->
