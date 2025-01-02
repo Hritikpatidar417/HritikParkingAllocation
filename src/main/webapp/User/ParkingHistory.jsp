@@ -167,7 +167,7 @@
        <h2>User Parking History</h2>
 
 
-       <!-- Parking History Table -->
+
        <table>
            <thead>
                <tr>

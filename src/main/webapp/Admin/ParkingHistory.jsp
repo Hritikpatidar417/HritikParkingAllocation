@@ -11,7 +11,7 @@
            margin: 0;
            padding: 0;
        }
-           /* Sidebar Styles */
+
                   .sidebar {
                       height: 100vh;
                       width: 250px;

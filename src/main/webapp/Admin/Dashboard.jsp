@@ -257,7 +257,7 @@
     <h2 class="section-title">All Parking Status</h2>
 
 
-                                            <!-- Bike Parking Section -->
+
     <h4>Bike Parking</h4>
     <div class="parking-container">
         <c:forEach var="parking" items="${parking}">
@@ -283,7 +283,7 @@
     </div>
 
 
-                                                <!-- Car Parking Section -->
+
     <h4>Car Parking</h4>
     <div class="parking-container">
         <c:forEach var="parking" items="${parking}">

@@ -4,7 +4,7 @@
 <head>
     <title>Welcome</title>
     <style>
-        /* General Styling */
+
         body {
             margin: 0;
             padding: 0;
@@ -19,7 +19,7 @@
         }
 
 
-        /* Welcome Container */
+
         .welcome-container {
             background: white; /* Container background color */
             padding: 20px 40px;
@@ -29,14 +29,14 @@
         }
 
 
-        /* Logo Styling */
+
         .logo img {
             width: 200px;
             margin-bottom: 20px;
         }
 
 
-        /* Title Styling */
+
         h1 {
             font-size: 1.2em;
             margin-bottom: 20px;
@@ -49,7 +49,7 @@
                 }
 
 
-        /* Button Container */
+
         .button-container {
             display: flex;
             justify-content: center;
@@ -58,7 +58,7 @@
         }
 
 
-        /* Buttons */
+
         .btn {
             text-decoration: none;
             color: white;
@@ -77,18 +77,18 @@
 </head>
 <body>
     <div class="welcome-container">
-        <!-- Logo Section -->
+
         <div class="logo">
             <img src="./YashLogo.png" alt="Company Logo">
         </div>
 
 
-        <!-- Title Section -->
+
         <h1>Welcome</hi>
         <h2>Yash Technologies Parking Allocation System</h2>
 
 
-        <!-- Buttons Section -->
+
         <div class="button-container">
             <a href="/Register.jsp" class="btn">Register</a>
             <a href="/Login.jsp" class="btn">Login</a>
