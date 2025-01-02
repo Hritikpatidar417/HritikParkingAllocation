@@ -50,7 +50,6 @@ public class ViewParkingHistory extends HttpServlet {
         }
 
         List<ParkingHistory> parkingHistoryList = parkingDaoImpl.viewParkingHistory(startDate, endDate);
-//        System.out.println("Parkinh list"+parkingHistoryList);
         request.setAttribute("parkingHistory", parkingHistoryList);
         request.getRequestDispatcher("/Admin/ParkingHistory.jsp").forward(request, response);
     }
