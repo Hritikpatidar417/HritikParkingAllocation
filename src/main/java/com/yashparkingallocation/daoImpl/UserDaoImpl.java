@@ -18,7 +18,7 @@ public class UserDaoImpl  implements UserDao {
         this.jdbcUtils =new JdbcUtils();
     }
 
-    public String addUser(int userId, String name,String role, String password)
+    public String addUser(int userId, String name, String password)
     {
         try {
 
@@ -26,8 +26,7 @@ public class UserDaoImpl  implements UserDao {
 
             Connection con=jdbcUtils.establishConnection();
             Statement statement = con.createStatement();
-            String query = "INSERT INTO Users (userId, name, role, password) " +
-                    "VALUES (" + userId + ", '" + name + "', '" + role + "', '" + password + "')";
+            String query = "INSERT INTO Users VALUES (" + userId + ", '" + name + "',  'user' , '" + password + "')";
             PreparedStatement ps = con.prepareStatement(query);
              int rowsAffected = ps.executeUpdate();
             con.close();

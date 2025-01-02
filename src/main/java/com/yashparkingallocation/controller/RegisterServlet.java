@@ -26,12 +26,11 @@ public class RegisterServlet extends HttpServlet {
 
         int userId = Integer.parseInt(request.getParameter("userId"));
         String userName = request.getParameter("userName");
-        String role = request.getParameter("role");
         String password = request.getParameter("password");
 
 
         // Add user using DAO
-        String status = userDaoImpl.addUser(userId, userName, role, password);
+        String status = userDaoImpl.addUser(userId, userName, password);
 
 
         // Check if registration was successful
