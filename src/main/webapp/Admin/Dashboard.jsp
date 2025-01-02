@@ -14,7 +14,7 @@
            }
 
 
-           /* Sidebar Styles */
+
            .sidebar {
                height: 100vh;
                width: 250px;
@@ -49,7 +49,7 @@
            }
 
 
-           /* Main Content Styles */
+
            .main-content {
                margin-left: 270px;
                padding: 20px;
@@ -92,7 +92,7 @@
            }
 
 
-           /* Parking Slot Styles */
+
            .parking-container {
                display: grid;
                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -153,7 +153,7 @@
            }
 
 
-           /* Modal Styles */
+
            .modal {
                display: none;
                position: fixed;
@@ -240,24 +240,24 @@
     <a href="/admin/dashboard">Dashboard</a>
      <a href="/Admin/AddParkingSlot.jsp">Add Parking Slots</a>
 
-    <a href="/Admin/RemoveParking.jsp">Remove Parking Slots</a>
+    <a href="/admin/ViewRemoveParkingSlot">Remove Parking Slots</a>
     <a href="/Admin/ParkingHistory.jsp">View Parking History</a>
     <a href="/logout">Logout</a>
 </div>
 
 
 <div class="main-content">
-    <!-- Navbar -->
+
     <div class="navbar">
         <h4>Welcome, ${sessionScope.user.name} (${sessionScope.user.userId}) (Admin)</h4>
     </div>
 
 
-    <!-- Parking Slots Section -->
+
     <h2 class="section-title">All Parking Status</h2>
 
 
-    <!-- Bike Parking Section -->
+                                            <!-- Bike Parking Section -->
     <h4>Bike Parking</h4>
     <div class="parking-container">
         <c:forEach var="parking" items="${parking}">
@@ -283,7 +283,7 @@
     </div>
 
 
-    <!-- Car Parking Section -->
+                                                <!-- Car Parking Section -->
     <h4>Car Parking</h4>
     <div class="parking-container">
         <c:forEach var="parking" items="${parking}">

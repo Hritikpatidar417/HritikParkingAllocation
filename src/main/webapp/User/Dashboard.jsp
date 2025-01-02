@@ -14,7 +14,7 @@
         }
 
 
-        /* Sidebar Styles */
+
         .sidebar
               {
                  height: 100vh;
@@ -109,7 +109,7 @@
         }
 
 
-        /* Parking Slot Styles */
+
         .parking-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -170,7 +170,7 @@
         }
 
 
-        /* Modal Styles */
+
         .modal {
             display: none;
             position: fixed;
@@ -239,7 +239,7 @@
 
 
 <div class="main-content">
-    <!-- Navbar -->
+
     <div class="navbar">
         <h4>Welcome, ${sessionScope.user.name} (${sessionScope.user.userId})</h4>
     </div>
@@ -247,11 +247,11 @@
 
    <div class="container">
 
-    <!-- Parking Slots Section -->
+
     <h2 class="heading">Parking Slots</h2>
 
 
-    <!-- Bike Parking Section -->
+
     <h4>Bike Parking</h4>
     <div class="parking-container">
         <c:forEach var="parking" items="${parking}">
@@ -283,7 +283,7 @@
     </div>
 
 
-    <!-- Car Parking Section -->
+
     <h4>Car Parking</h4>
     <div class="parking-container">
         <c:forEach var="parking" items="${parking}">
@@ -316,7 +316,7 @@
 </div>
 
 
-<!-- Modal (Popup) -->
+<!-- (Popup) -->
 <div id="parkingModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>

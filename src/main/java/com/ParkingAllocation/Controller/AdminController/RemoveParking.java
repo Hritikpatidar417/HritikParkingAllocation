@@ -23,19 +23,8 @@ public class RemoveParking extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String[] slotIdListStr = request.getParameterValues("slotIdList");
-
-        // Convert slotId to integers
-        int[] slotIdList = new int[slotIdListStr.length];
-        for (int i = 0; i < slotIdListStr.length; i++) {
-            slotIdList[i] = Integer.parseInt(slotIdListStr[i]);
-
-
-            String status = parkingDaoImpl.removeParking(slotIdList);
-
-            request.getRequestDispatcher("/Status.jsp").forward(request, response);
-
-        }
-
+        int slotId=Integer.parseInt(request.getParameter("slotId"));
+            String status = parkingDaoImpl.removeParking(slotId);
+            response.sendRedirect("/admin/ViewRemoveParkingSlot");
     }
 }

@@ -117,19 +117,9 @@
     <div class="form-container">
         <h1>Login</h1>
 
-        <!-- Display error message if available -->
-        <%
-            String errorMessage = (String) request.getAttribute("errorMessage");
-            if (errorMessage != null) {
-        %>
-        <div class="error-message">
-            <%= errorMessage %>
-        </div>
-        <%
-            }
-        %>
 
-        <!-- Display the registration success message -->
+
+
             <c:if test="${not empty registrationStatus}">
                 <p style="color: green;">${registrationStatus}</p>
             </c:if>

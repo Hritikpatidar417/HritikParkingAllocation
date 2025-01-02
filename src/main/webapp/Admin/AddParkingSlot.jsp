@@ -12,7 +12,7 @@
        }
 
 
-           /* Sidebar Styles */
+
                   .sidebar {
                       height: 100vh;
                       width: 250px;
@@ -68,7 +68,7 @@
                                  margin: 0;
                                  color: white;
                              }
-  img {
+           img {
                        max-width: 250px;
                        margin-bottom: 20px;
                       background-color:white;
@@ -175,14 +175,14 @@
     <h3>Parking System</h3>
      <a href="/admin/dashboard">Dashboard</a>
     <a href="/Admin/AddParkingSlot.jsp">Add Parking Slots</a>
-    <a href="/Admin/RemoveParking.jsp">Remove Parking Slots</a>
+    <a href="/admin/ViewRemoveParkingSlot">Remove Parking Slots</a>
     <a href="/Admin/ParkingHistory.jsp">View Parking History</a>
     <a href="/logout">Logout</a>
 </div>
 
 
 <div class="main-content">
-    <!-- Navbar -->
+
     <div class="navbar">
         <h4>Welcome, ${sessionScope.user.name} (${sessionScope.user.userId}) (Admin)</h4>
     </div>
@@ -226,7 +226,9 @@
 </div>
 
    <script>
+
        // Function to add a new row to the table
+
        function addRow() {
            const tableBody = document.getElementById("parkingTable");
            const newRow = document.createElement("tr");
