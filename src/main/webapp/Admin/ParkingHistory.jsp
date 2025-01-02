@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
    <title>Parking History</title>
    <style>
        body {
