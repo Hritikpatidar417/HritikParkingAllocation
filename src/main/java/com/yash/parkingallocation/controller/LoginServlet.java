@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         User user = loginService.validateUser(userId, password);
 
-
+         //Validate User
         if (user != null && user.getRole().equals("user") ) {
             request.getSession().setAttribute("user", user);
             response.sendRedirect("/user/dashboard");

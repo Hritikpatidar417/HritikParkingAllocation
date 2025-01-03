@@ -24,12 +24,12 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
+        // request data from register page
         int userId = Integer.parseInt(request.getParameter("userId"));
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
 
-        // Add user using DAO
+        // Add user using service and dao
         String status = registerService.addUser(userId, userName, password);
 
 
@@ -41,7 +41,7 @@ public class RegisterServlet extends HttpServlet {
         }
 
 
-        // Forward to Login.jsp
+        // Forward to Login.jsp with massage success or failed
         request.getRequestDispatcher("/Login.jsp").forward(request, response);
     }
 
