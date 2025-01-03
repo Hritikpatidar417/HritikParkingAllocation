@@ -1,7 +1,6 @@
 package com.yash.parkingallocation.controller;
 
 
-import com.yash.parkingallocation.daoImpl.ParkingDaoImpl;
 import com.yash.parkingallocation.entity.ParkingHistory;
 import com.yash.parkingallocation.entity.User;
 import com.yash.parkingallocation.service.ParkingHistoryService;
