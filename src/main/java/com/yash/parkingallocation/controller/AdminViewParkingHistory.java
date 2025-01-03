@@ -1,8 +1,9 @@
-package com.yashparkingallocation.controller;
+package com.yash.parkingallocation.controller;
 
 
-import com.yashparkingallocation.daoImpl.ParkingDaoImpl;
-import com.yashparkingallocation.entity.ParkingHistory;
+import com.yash.parkingallocation.daoImpl.ParkingDaoImpl;
+import com.yash.parkingallocation.entity.ParkingHistory;
+import com.yash.parkingallocation.service.ParkingHistoryService;
 
 
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,36 +22,45 @@ import java.util.List;
 public class AdminViewParkingHistory extends HttpServlet {
 
 
-    private ParkingDaoImpl parkingDaoImpl;
+    private ParkingHistoryService parkingHistoryService;
 
 
     public AdminViewParkingHistory() {
-        this.parkingDaoImpl = new ParkingDaoImpl();
+        this.parkingHistoryService = new ParkingHistoryService();
     }
 
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        List<ParkingHistory> parkingHistoryList=new ArrayList<>();
         String startDateParam = request.getParameter("startDate");
         String endDateParam = request.getParameter("endDate");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date startDate = null;
         Date endDate = null;
 
+
         try {
-            if (startDateParam != null && !startDateParam.isEmpty()) {
+            if ((startDateParam != null && !startDateParam.isEmpty()) && ((endDateParam != null && !endDateParam.isEmpty())))
+            {
                 startDate = dateFormat.parse(startDateParam);
-            }
-            if (endDateParam != null && !endDateParam.isEmpty()) {
                 endDate = dateFormat.parse(endDateParam);
+                 parkingHistoryList = parkingHistoryService.viewParkingHistory(startDate, endDate);
+                request.setAttribute("parkingHistory", parkingHistoryList);
+                request.getRequestDispatcher("/admin/ParkingHistory.jsp").forward(request, response);
+            }else{
+                parkingHistoryList=parkingHistoryService.viewAllParkingHistory();
             }
+
+
         } catch (Exception e) {
             e.printStackTrace();
             request.setAttribute("error", "Invalid date format. Please use 'yyyy-MM-dd'.");
+        }finally {
+            request.setAttribute("parkingHistory", parkingHistoryList);
+            request.getRequestDispatcher("/admin/ParkingHistory.jsp").forward(request, response);
         }
 
-        List<ParkingHistory> parkingHistoryList = parkingDaoImpl.viewParkingHistory(startDate, endDate);
-        request.setAttribute("parkingHistory", parkingHistoryList);
-        request.getRequestDispatcher("/admin/ParkingHistory.jsp").forward(request, response);
+
     }
 }

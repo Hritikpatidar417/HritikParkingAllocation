@@ -1,7 +1,9 @@
-package com.yashparkingallocation.controller;
+package com.yash.parkingallocation.controller;
 
-import com.yashparkingallocation.daoImpl.ParkingDaoImpl;
-import com.yashparkingallocation.entity.User;
+import com.yash.parkingallocation.daoImpl.ParkingDaoImpl;
+import com.yash.parkingallocation.entity.User;
+import com.yash.parkingallocation.service.CheckInService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,26 +12,28 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/user/checkOut")
-public class CheckOut extends HttpServlet {
+
+@WebServlet("/user/checkIn")
+public class CheckIn extends HttpServlet {
 
 
-    private ParkingDaoImpl parkingDaoImpl;
+    private CheckInService checkInService;
 
-    public CheckOut() {
-        this.parkingDaoImpl = new ParkingDaoImpl();
+    public CheckIn() {
+        this.checkInService = new CheckInService();
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("Parking controller");
-
+        String vehicleNo=request.getParameter("vehicleNo");
         int parkingId=Integer.parseInt(request.getParameter("parkingId"));
+
         User user = (User) request.getSession().getAttribute("user");
 
         if (user != null) {
             try {
-                String status=parkingDaoImpl.checkOut(parkingId);
+                String status=checkInService.checkIn(user.getUserId(),parkingId,vehicleNo);
                 request.setAttribute("status",status);
                 response.sendRedirect("/user/dashboard");
 

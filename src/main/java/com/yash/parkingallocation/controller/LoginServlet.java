@@ -1,7 +1,8 @@
-package com.yashparkingallocation.controller;
+package com.yash.parkingallocation.controller;
 
-import com.yashparkingallocation.entity.User;
-import com.yashparkingallocation.daoImpl.UserDaoImpl;
+import com.yash.parkingallocation.entity.User;
+import com.yash.parkingallocation.daoImpl.UserDaoImpl;
+import com.yash.parkingallocation.service.LoginService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,17 +12,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/LoginValidationServlet")
-public class LoginValidationServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
-    private UserDaoImpl userDaoImpl=new UserDaoImpl();
+    private LoginService loginService;
 
+    public LoginServlet() {
+        this.loginService=new LoginService();
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("Validate Login");
         int userId = Integer.parseInt(request.getParameter("userId"));
         String password = request.getParameter("password");
-        User user = userDaoImpl.validateUser(userId, password);
+        User user = loginService.validateUser(userId, password);
 
 
         if (user != null && user.getRole().equals("user") ) {

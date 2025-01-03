@@ -1,4 +1,4 @@
-package com.yashparkingallocation.entity;
+package com.yash.parkingallocation.entity;
 
 public class User {
     private  int userId;

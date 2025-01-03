@@ -1,6 +1,7 @@
-package com.yashparkingallocation.controller;
+package com.yash.parkingallocation.controller;
 
-import com.yashparkingallocation.daoImpl.UserDaoImpl;
+import com.yash.parkingallocation.daoImpl.UserDaoImpl;
+import com.yash.parkingallocation.service.RegisterService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +13,10 @@ import java.io.IOException;
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 
-    private UserDaoImpl userDaoImpl;
+    private RegisterService registerService;
 
     public RegisterServlet() {
-        this.userDaoImpl = new UserDaoImpl();
+        this.registerService = new RegisterService();
     }
 
 
@@ -28,9 +29,8 @@ public class RegisterServlet extends HttpServlet {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
 
-
         // Add user using DAO
-        String status = userDaoImpl.addUser(userId, userName, password);
+        String status = registerService.addUser(userId, userName, password);
 
 
         // Check if registration was successful

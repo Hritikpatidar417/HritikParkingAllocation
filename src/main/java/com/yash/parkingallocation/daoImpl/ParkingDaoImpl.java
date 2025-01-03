@@ -1,11 +1,11 @@
-package com.yashparkingallocation.daoImpl;
+package com.yash.parkingallocation.daoImpl;
 
 
-import com.yashparkingallocation.dao.ParkingDao;
-import com.yashparkingallocation.entity.ParkingHistory;
-import com.yashparkingallocation.entity.ParkingModel;
-import com.yashparkingallocation.entity.User;
-import com.yashparkingallocation.jdbcutils.JdbcUtils;
+import com.yash.parkingallocation.jdbcutils.JdbcUtils;
+import com.yash.parkingallocation.dao.ParkingDao;
+import com.yash.parkingallocation.entity.ParkingHistory;
+import com.yash.parkingallocation.entity.ParkingModel;
+import com.yash.parkingallocation.entity.User;
 
 import java.sql.*;
 import java.time.LocalTime;
@@ -223,7 +223,46 @@ public class ParkingDaoImpl implements ParkingDao {
         }
     }
 
-    public List<ParkingHistory> viewAllParkingHistory(int employeeId)
+    public List<ParkingHistory> viewAllParkingHistory()
+    {
+        List<ParkingHistory> parkingHistoryList=new ArrayList<>();
+        try {
+            Connection conn=jdbcUtils.establishConnection();
+
+            String query = "SELECT * FROM parkingHistory";
+
+            PreparedStatement preparedStatement = conn.prepareStatement(query);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                ParkingHistory parkingHistory = new ParkingHistory();
+
+                parkingHistory.setSno(resultSet.getInt("sno"));
+                parkingHistory.setParkingSlot(resultSet.getInt("parkingSlot"));
+                parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
+                parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
+                parkingHistory.setDate(resultSet.getDate("date"));
+                Timestamp startTimeTimestamp = resultSet.getTimestamp("startTime");
+                Timestamp endTimeTimestamp = resultSet.getTimestamp("endTime");
+                if(startTimeTimestamp!=null)
+                {
+                    parkingHistory.setStartTime(resultSet.getTime("startTime").toLocalTime());
+                }
+                if(endTimeTimestamp!=null)
+                {
+                    parkingHistory.setEndTime(resultSet.getTime("endTime").toLocalTime());
+                }
+
+                parkingHistoryList.add(parkingHistory);
+            }
+            return parkingHistoryList;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<ParkingHistory> viewAllUserParkingHistory(int employeeId)
     {
         List<ParkingHistory> parkingHistoryList=new ArrayList<>();
         try {

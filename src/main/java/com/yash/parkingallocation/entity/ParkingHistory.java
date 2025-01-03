@@ -1,4 +1,4 @@
-package com.yashparkingallocation.entity;
+package com.yash.parkingallocation.entity;
 
 import java.time.LocalTime;
 import java.util.Date;

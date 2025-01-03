@@ -1,7 +1,7 @@
-package com.yashparkingallocation.dao;
+package com.yash.parkingallocation.dao;
 
-import com.yashparkingallocation.entity.ParkingHistory;
-import com.yashparkingallocation.entity.ParkingModel;
+import com.yash.parkingallocation.entity.ParkingHistory;
+import com.yash.parkingallocation.entity.ParkingModel;
 
 import java.util.Date;
 import java.util.List;
@@ -13,5 +13,7 @@ public interface ParkingDao {
     public String checkIn(int userId,int parkingSlot,String vehicleNo);
     public String checkOut(int parkingId);
     public List<ParkingHistory> viewParkingHistory(Date startDate, Date endDate);
+    public List<ParkingHistory> viewAllParkingHistory();
+    public List<ParkingHistory> viewAllUserParkingHistory(int employeeId);
     public List<ParkingModel> getAllParkingSlot();
 }

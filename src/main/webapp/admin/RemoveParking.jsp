@@ -212,7 +212,7 @@
                 <thead>
                     <tr>
                         <th>Slot ID</th>
-
+                        <th>Type</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -220,6 +220,7 @@
                     <c:forEach var="parking" items="${parking}">
                         <tr>
                             <td>${parking.parkingId}</td>
+                              <td>${parking.parkingType}</td>
 
                             <td>
                                 <button type="submit" name="slotId" value="${parking.parkingId}" class="btn btn-danger">Remove</button>

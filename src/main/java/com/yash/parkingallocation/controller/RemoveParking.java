@@ -1,7 +1,7 @@
-package com.yashparkingallocation.controller;
+package com.yash.parkingallocation.controller;
 
-import com.yashparkingallocation.daoImpl.ParkingDaoImpl;
-
+import com.yash.parkingallocation.daoImpl.ParkingDaoImpl;
+import com.yash.parkingallocation.service.ParkingService;
 
 
 import javax.servlet.ServletException;
@@ -15,16 +15,16 @@ import java.io.IOException;
 @WebServlet("/admin/removeParking")
 public class RemoveParking extends HttpServlet {
 
-    ParkingDaoImpl parkingDaoImpl;
+   private ParkingService parkingService;
 
     public RemoveParking() {
-        this.parkingDaoImpl = new ParkingDaoImpl();
+        this.parkingService = new ParkingService();
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int slotId=Integer.parseInt(request.getParameter("slotId"));
-            String status = parkingDaoImpl.removeParking(slotId);
+            String status = parkingService.removeParking(slotId);
             response.sendRedirect("/admin/ViewRemoveParkingSlot");
     }
 }

@@ -1,8 +1,9 @@
-package com.yashparkingallocation.controller;
+package com.yash.parkingallocation.controller;
 
-import com.yashparkingallocation.daoImpl.ParkingDaoImpl;
-import com.yashparkingallocation.entity.ParkingModel;
-import com.yashparkingallocation.entity.User;
+import com.yash.parkingallocation.daoImpl.ParkingDaoImpl;
+import com.yash.parkingallocation.entity.ParkingModel;
+import com.yash.parkingallocation.entity.User;
+import com.yash.parkingallocation.service.ParkingService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,10 +16,10 @@ import java.util.List;
 @WebServlet("/admin/dashboard")
 public class AdminDashboard extends HttpServlet {
 
-    private ParkingDaoImpl parkingDaoImpl;
+    private ParkingService parkingService;
 
     public AdminDashboard() {
-        this.parkingDaoImpl = new ParkingDaoImpl();
+        this.parkingService = new ParkingService();
     }
 
     @Override
@@ -26,12 +27,12 @@ public class AdminDashboard extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
 
         if(user!=null) {
-            List<ParkingModel> parkingModelList = parkingDaoImpl.getAllParkingSlot();
+            List<ParkingModel> parkingModelList = parkingService.getAllParkingSlot();
             request.setAttribute("parking", parkingModelList);
             request.getRequestDispatcher("/admin/Dashboard.jsp").forward(request, response);
 
         }else {
-            response.sendRedirect("/login");
+            response.sendRedirect("/Login.jsp");
         }
     }
 

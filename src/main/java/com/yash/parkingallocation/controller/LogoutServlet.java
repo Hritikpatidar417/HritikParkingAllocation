@@ -1,4 +1,4 @@
-package com.yashparkingallocation.controller;
+package com.yash.parkingallocation.controller;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,12 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/login")
-public class LoginRedirect extends HttpServlet {
+
+@WebServlet("/logout")
+public class LogoutServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Login");
-        response.sendRedirect("Login.jsp");  // Use forward slash (/) for context root
+        request.getSession().invalidate();
+        response.sendRedirect("/Login.jsp");
     }
 }

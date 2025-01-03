@@ -241,7 +241,7 @@
      <a href="/admin/AddParkingSlot.jsp">Add Parking Slots</a>
 
     <a href="/admin/ViewRemoveParkingSlot">Remove Parking Slots</a>
-    <a href="/admin/ParkingHistory.jsp">View Parking History</a>
+    <a href="/admin/ViewParkingHistory">View Parking History</a>
     <a href="/logout">Logout</a>
 </div>
 

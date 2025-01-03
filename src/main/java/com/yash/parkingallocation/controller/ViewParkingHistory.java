@@ -1,9 +1,10 @@
-package com.yashparkingallocation.controller;
+package com.yash.parkingallocation.controller;
 
 
-import com.yashparkingallocation.daoImpl.ParkingDaoImpl;
-import com.yashparkingallocation.entity.ParkingHistory;
-import com.yashparkingallocation.entity.User;
+import com.yash.parkingallocation.daoImpl.ParkingDaoImpl;
+import com.yash.parkingallocation.entity.ParkingHistory;
+import com.yash.parkingallocation.entity.User;
+import com.yash.parkingallocation.service.ParkingHistoryService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,11 +19,11 @@ import java.util.List;
 public class ViewParkingHistory extends HttpServlet {
 
 
-    private ParkingDaoImpl parkingDaoImpl;
+    private ParkingHistoryService parkingHistoryService;
 
 
     public ViewParkingHistory() {
-        this.parkingDaoImpl = new ParkingDaoImpl();
+        this.parkingHistoryService = new ParkingHistoryService();
     }
 
 
@@ -32,11 +33,11 @@ public class ViewParkingHistory extends HttpServlet {
             User user = (User) request.getSession().getAttribute("user");
             if(user!=null)
             {
-                List<ParkingHistory> parkingHistoryList=parkingDaoImpl.viewAllParkingHistory(user.getUserId());
+                List<ParkingHistory> parkingHistoryList=parkingHistoryService.viewAllUserParkingHistory(user.getUserId());
                 request.setAttribute("parkingHistory", parkingHistoryList);
-                request.getRequestDispatcher("/User/ParkingHistory.jsp").forward(request, response);
+                request.getRequestDispatcher("/user/ParkingHistory.jsp").forward(request, response);
             }else {
-                response.sendRedirect("/login");
+                response.sendRedirect("/Login.jsp");
             }
     }
 }

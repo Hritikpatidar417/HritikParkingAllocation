@@ -1,12 +1,10 @@
-package com.yashparkingallocation.dao;
+package com.yash.parkingallocation.dao;
 
-import com.yashparkingallocation.entity.ParkingModel;
-import com.yashparkingallocation.entity.User;
+import com.yash.parkingallocation.entity.ParkingModel;
+import com.yash.parkingallocation.entity.User;
 
 public interface UserDao {
     public String addUser(int userId, String name, String password);
-    public String addParkingSlot(ParkingModel parkingModel);
-
     public User validateUser(int userId, String password);
     public User getUserInformation(int userId);
 }
