@@ -109,15 +109,18 @@
         <h1>Register</h1>
         <form action="/register" method="post">
             <label for="userId">UserId:</label>
-            <input type="text" id="userId" name="userId" required>
+            <input type="text" id="userId" name="userId" placeholder="Enter your User ID"required>
+
+            <label for="phoneNo">PhoneNo:</label>
+            <input type="text" id="phoneNo" name="phoneNo" placeholder="Enter your PhoneNo."required>
 
 
             <label for="userName">Username:</label>
-            <input type="text" id="userName" name="userName" required>
+            <input type="text" id="userName" name="userName" placeholder="Enter your Name"required>
 
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" placeholder="Enter your New Password"required>
 
 
             <button type="submit">Register</button>

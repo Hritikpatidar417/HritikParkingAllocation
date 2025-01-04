@@ -2,7 +2,6 @@ package com.yash.parkingallocation.daoImpl;
 
 import com.yash.parkingallocation.jdbcutils.JdbcUtils;
 import com.yash.parkingallocation.dao.UserDao;
-import com.yash.parkingallocation.entity.ParkingModel;
 import com.yash.parkingallocation.entity.User;
 
 import java.sql.Connection;
@@ -18,7 +17,7 @@ public class UserDaoImpl  implements UserDao {
         this.jdbcUtils =new JdbcUtils();
     }
 
-    public String addUser(int userId, String name, String password)
+    public String addUser(int userId, String phoneNo, String name, String password)
     {
         try {
 
@@ -26,7 +25,7 @@ public class UserDaoImpl  implements UserDao {
 
             Connection con=jdbcUtils.establishConnection();
             Statement statement = con.createStatement();
-            String query = "INSERT INTO Users VALUES (" + userId + ", '" + name + "',  'user' , '" + password + "')";
+            String query = "INSERT INTO Users VALUES (" + userId + ",'" + phoneNo +"', '" + name + "',  'user' , '" + password + "')";
             PreparedStatement ps = con.prepareStatement(query);
              int rowsAffected = ps.executeUpdate();
             con.close();
