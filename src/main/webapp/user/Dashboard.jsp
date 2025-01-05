@@ -232,7 +232,6 @@
     <h3>Parking System</h3>
 
     <a href="#">Park Vehicle</a>
-
     <a href="/user/ViewParkingHistory">View Booking History</a>
     <a href="/logout">Logout</a>
 </div>

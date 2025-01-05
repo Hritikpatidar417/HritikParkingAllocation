@@ -1,9 +1,7 @@
 package com.yash.parkingallocation.controller;
 
 import com.yash.parkingallocation.entity.User;
-import com.yash.parkingallocation.daoImpl.UserDaoImpl;
 import com.yash.parkingallocation.service.LoginService;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
