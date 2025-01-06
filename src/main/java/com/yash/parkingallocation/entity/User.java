@@ -4,6 +4,7 @@ public class User {
     private  int userId;
     private String name;
     private String role;
+    private String mobileNo;
     private String password;
 
     public User(int userId, String name, String role,String password) {
@@ -46,5 +47,24 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getMobileNo() {
+        return mobileNo;
+    }
+
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", role='" + role + '\'' +
+                ", mobileNo='" + mobileNo + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

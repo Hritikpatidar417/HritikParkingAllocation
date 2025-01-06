@@ -237,6 +237,7 @@
                    <th>Parking Slot</th>
                    <th>Employee ID</th>
                    <th>Employee Name</th>
+                   <th>MobileNo</th>
                    <th>Date</th>
                    <th>Start Time</th>
                    <th>End Time</th>
@@ -249,6 +250,7 @@
                        <td>${history.parkingSlot}</td>
                        <td>${history.employeeId}</td>
                        <td>${history.employeeName}</td>
+                       <td>${history.mobileNo}</td>
                        <td>${history.date}</td>
                        <td>${history.startTime}</td>
                        <td>${history.endTime}</td>

@@ -126,8 +126,8 @@ public class ParkingDaoImpl implements ParkingDao {
               parkingHistory.setStartTime(LocalTime.now());
               parkingHistory.setParkingSlot(parkingSlot);
 
-              String sql = "INSERT INTO ParkingHistory (sno, parkingSlot, employeeId, employeeName, date, startTime, vehicleNo) " +
-                      "VALUES (?, ?, ?, ?, ?, ?, ?)";
+              String sql = "INSERT INTO ParkingHistory (sno, parkingSlot, employeeId, employeeName, date, startTime, vehicleNo, mobileNo) " +
+                      "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
               updateStatement = con.prepareStatement(sql);
               updateStatement.setInt(1, maxParkingHistoryId);
@@ -137,6 +137,7 @@ public class ParkingDaoImpl implements ParkingDao {
               updateStatement.setDate(5, new java.sql.Date(parkingHistory.getDate().getTime()));
               updateStatement.setTime(6, java.sql.Time.valueOf(parkingHistory.getStartTime()));
               updateStatement.setString(7, vehicleNo);
+              updateStatement.setString(8,user.getMobileNo());
               updateStatement.executeUpdate();
 
               // It is setting parking status as occupied so other cannot able to book same slot
@@ -203,6 +204,7 @@ public class ParkingDaoImpl implements ParkingDao {
                     parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
                     parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
                     parkingHistory.setDate(resultSet.getDate("date"));
+                    parkingHistory.setMobileNo(resultSet.getString("mobileNo"));
                     Timestamp startTimeTimestamp = resultSet.getTimestamp("startTime");
                     Timestamp endTimeTimestamp = resultSet.getTimestamp("endTime");
                     if(startTimeTimestamp!=null)
@@ -242,6 +244,7 @@ public class ParkingDaoImpl implements ParkingDao {
                 parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
                 parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
                 parkingHistory.setDate(resultSet.getDate("date"));
+                parkingHistory.setMobileNo(resultSet.getString("mobileNo"));
                 Timestamp startTimeTimestamp = resultSet.getTimestamp("startTime");
                 Timestamp endTimeTimestamp = resultSet.getTimestamp("endTime");
                 if(startTimeTimestamp!=null)
@@ -283,6 +286,7 @@ public class ParkingDaoImpl implements ParkingDao {
                 parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
                 parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
                 parkingHistory.setDate(resultSet.getDate("date"));
+                parkingHistory.setMobileNo(resultSet.getString("mobileNo"));
                 Timestamp startTimeTimestamp = resultSet.getTimestamp("startTime");
                 Timestamp endTimeTimestamp = resultSet.getTimestamp("endTime");
                 if(startTimeTimestamp!=null)

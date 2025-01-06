@@ -17,7 +17,7 @@ public class UserDaoImpl  implements UserDao {
         this.jdbcUtils =new JdbcUtils();
     }
 
-    public String addUser(int userId, String phoneNo, String name, String password)
+    public String addUser(int userId, String mobileNo, String name, String password)
     {
         try {
 
@@ -25,7 +25,7 @@ public class UserDaoImpl  implements UserDao {
 
             Connection con=jdbcUtils.establishConnection();
             Statement statement = con.createStatement();
-            String query = "INSERT INTO Users VALUES (" + userId + ",'" + phoneNo +"', '" + name + "',  'user' , '" + password + "')";
+            String query = "INSERT INTO Users VALUES (" + userId + ",'" + mobileNo +"', '" + name + "',  'user' , '" + password + "')";
             PreparedStatement ps = con.prepareStatement(query);
              int rowsAffected = ps.executeUpdate();
             con.close();
@@ -50,7 +50,7 @@ public class UserDaoImpl  implements UserDao {
         try {
 
         Connection con=jdbcUtils.establishConnection();
-        String query = "SELECT userId, name, role, password FROM users WHERE userId = ?";
+        String query = "SELECT * FROM users WHERE userId = ?";
 
         PreparedStatement stmt = con.prepareStatement(query);
         stmt.setInt(1, userId);
@@ -62,9 +62,9 @@ public class UserDaoImpl  implements UserDao {
             user.setUserId(rs.getInt("userId"));
             user.setName(rs.getString("name"));
             user.setRole(rs.getString("role"));
+            user.setMobileNo(rs.getString("mobileNo"));
             user.setPassword(rs.getString("password"));
         }
-
 
         if(user.getPassword().equals(password))
         {
@@ -93,6 +93,7 @@ public class UserDaoImpl  implements UserDao {
 
                 user.setUserId(resultSet.getInt("userId"));
                 user.setName(resultSet.getString("name"));
+                user.setMobileNo(resultSet.getString("mobileNo"));
             }
             con.close();
             return user;
