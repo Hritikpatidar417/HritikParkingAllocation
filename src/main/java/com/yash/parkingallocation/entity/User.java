@@ -56,4 +56,15 @@ public class User {
     public void setMobileNo(String mobileNo) {
         this.mobileNo = mobileNo;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", role='" + role + '\'' +
+                ", mobileNo='" + mobileNo + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }

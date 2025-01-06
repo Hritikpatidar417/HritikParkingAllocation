@@ -127,7 +127,7 @@ public class ParkingDaoImpl implements ParkingDao {
               parkingHistory.setParkingSlot(parkingSlot);
 
               String sql = "INSERT INTO ParkingHistory (sno, parkingSlot, employeeId, employeeName, date, startTime, vehicleNo, mobileNo) " +
-                      "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                      "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
               updateStatement = con.prepareStatement(sql);
               updateStatement.setInt(1, maxParkingHistoryId);
@@ -204,6 +204,7 @@ public class ParkingDaoImpl implements ParkingDao {
                     parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
                     parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
                     parkingHistory.setDate(resultSet.getDate("date"));
+                    parkingHistory.setMobileNo(resultSet.getString("mobileNo"));
                     Timestamp startTimeTimestamp = resultSet.getTimestamp("startTime");
                     Timestamp endTimeTimestamp = resultSet.getTimestamp("endTime");
                     if(startTimeTimestamp!=null)
@@ -243,6 +244,7 @@ public class ParkingDaoImpl implements ParkingDao {
                 parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
                 parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
                 parkingHistory.setDate(resultSet.getDate("date"));
+                parkingHistory.setMobileNo(resultSet.getString("mobileNo"));
                 Timestamp startTimeTimestamp = resultSet.getTimestamp("startTime");
                 Timestamp endTimeTimestamp = resultSet.getTimestamp("endTime");
                 if(startTimeTimestamp!=null)
@@ -284,6 +286,7 @@ public class ParkingDaoImpl implements ParkingDao {
                 parkingHistory.setEmployeeId(resultSet.getInt("employeeId"));
                 parkingHistory.setEmployeeName(resultSet.getString("employeeName"));
                 parkingHistory.setDate(resultSet.getDate("date"));
+                parkingHistory.setMobileNo(resultSet.getString("mobileNo"));
                 Timestamp startTimeTimestamp = resultSet.getTimestamp("startTime");
                 Timestamp endTimeTimestamp = resultSet.getTimestamp("endTime");
                 if(startTimeTimestamp!=null)

@@ -173,6 +173,7 @@
                <tr>
                    <th>S.No</th>
                    <th>Parking Slot</th>
+                   <th>Mobile No</th>
                    <th>Date</th>
                    <th>Start Time</th>
                    <th>End Time</th>
@@ -183,6 +184,7 @@
                    <tr>
                        <td>${history.sno}</td>
                        <td>${history.parkingSlot}</td>
+                       <td>${history.mobileNo}</td>
                        <td>${history.date}</td>
                        <td>${history.startTime}</td>
                        <td>${history.endTime}</td>
