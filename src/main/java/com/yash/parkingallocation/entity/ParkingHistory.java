@@ -8,6 +8,7 @@ public class ParkingHistory {
     private int parkingSlot;
     private int employeeId;
     private String employeeName;
+    private String mobileNo;
     private Date date;
     private String vehicleNo;
     private LocalTime startTime;
@@ -89,17 +90,11 @@ public class ParkingHistory {
         this.vehicleNo = vehicleNo;
     }
 
-//    @Override
-//    public String toString() {
-//        return "ParkingHistory{" +
-//                "sno=" + sno +
-//                ", parkingSlot=" + parkingSlot +
-//                ", employeeId=" + employeeId +
-//                ", employeeName='" + employeeName + '\'' +
-//                ", date=" + date +
-//                ", vehicleNo='" + vehicleNo + '\'' +
-//                ", startTime=" + startTime +
-//                ", endTime=" + endTime +
-//               '}';
+    public String getMobileNo() {
+        return mobileNo;
+    }
 
+    public void setMobileNo(String mobileNo) {
+        this.mobileNo = mobileNo;
+    }
 }
