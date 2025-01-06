@@ -258,7 +258,7 @@
 
 
 
-    <h4>Bike Parking</h4>
+    <h4>Two Wheeler</h4>
     <div class="parking-container">
         <c:forEach var="parking" items="${parking}">
             <c:if test="${parking.parkingType == 'Bike'}">
@@ -284,7 +284,7 @@
 
 
 
-    <h4>Car Parking</h4>
+    <h4>Four Wheeler</h4>
     <div class="parking-container">
         <c:forEach var="parking" items="${parking}">
             <c:if test="${parking.parkingType == 'Car'}">
