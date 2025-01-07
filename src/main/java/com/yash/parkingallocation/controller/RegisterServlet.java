@@ -26,12 +26,12 @@ public class RegisterServlet extends HttpServlet {
 
         // request data from register page
         int userId = Integer.parseInt(request.getParameter("userId"));
-        String phoneNo = request.getParameter("phoneNo");
+        String mobileNo = request.getParameter("mobileNo");
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
 
         // Add user using service and dao
-        String status = registerService.addUser(userId, phoneNo, userName, password);
+        String status = registerService.addUser(userId, mobileNo, userName, password);
 
 
         // Check if registration was successful

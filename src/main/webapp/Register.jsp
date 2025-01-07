@@ -111,8 +111,8 @@
             <label for="userId">UserId:</label>
             <input type="text" id="userId" name="userId" placeholder="Enter your User ID"required>
 
-            <label for="phoneNo">PhoneNo:</label>
-            <input type="text" id="phoneNo" name="phoneNo" placeholder="Enter your PhoneNo."required>
+            <label for="mobileNo">mobileNo:</label>
+            <input type="text" id="mobileNo" name="mobileNo" placeholder="Enter your mobileNo."required>
 
 
             <label for="userName">Username:</label>

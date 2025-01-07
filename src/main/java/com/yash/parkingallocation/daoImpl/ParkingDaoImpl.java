@@ -6,7 +6,6 @@ import com.yash.parkingallocation.dao.ParkingDao;
 import com.yash.parkingallocation.entity.ParkingHistory;
 import com.yash.parkingallocation.entity.ParkingModel;
 import com.yash.parkingallocation.entity.User;
-
 import java.sql.*;
 import java.time.LocalTime;
 import java.util.ArrayList;

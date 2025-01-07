@@ -11,9 +11,9 @@ public class RegisterService {
         this.userDao=new UserDaoImpl();
     }
 
-    public String addUser(int userId, String phoneNo, String name, String password)
+    public String addUser(int userId, String mobileNo, String name, String password)
     {
-        String status=userDao.addUser(userId,phoneNo,name,password);
+        String status=userDao.addUser(userId,mobileNo,name,password);
         return status;
     }
 }
